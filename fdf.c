@@ -6,7 +6,7 @@
 /*   By: vinograd <vinograd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/03 15:13:25 by vinograd          #+#    #+#             */
-/*   Updated: 2019/07/05 20:00:44 by vinograd         ###   ########.fr       */
+/*   Updated: 2019/07/05 20:09:12 by vinograd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,6 @@ int		main(int argc, char **argv)
 	// 	ft_errors(1);
 	mlx_ptr = mlx_init();
 	win_ptr = mlx_new_window(mlx_ptr, 2000, 1000, "FDF");
-	i.x = 100;
-	i.y = 50;
-	j.x = 50;
-	j.y = 200;
-	i1.x = 50;
-	i1.y = 100;
-	j1.x = 100;
-	j1.y = 200;
 	drow(i, j, mlx_ptr, win_ptr);
 	drow(i1, j1, mlx_ptr, win_ptr);
 	mlx_key_hook(win_ptr, deal_key, NULL);
