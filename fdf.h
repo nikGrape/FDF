@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vinograd <vinograd@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Nik <Nik@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/03 15:13:39 by vinograd          #+#    #+#             */
-/*   Updated: 2019/07/05 19:24:44 by vinograd         ###   ########.fr       */
+/*   Updated: 2019/07/28 12:48:56 by Nik              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@ typedef struct	s_dot
 	float			z;
 	struct s_dot	*next;
 }				t_dot;
+
+void			*mlx_ptr;
+void			*win_ptr;
 
 void			ft_errors(int i);
 
