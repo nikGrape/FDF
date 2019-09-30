@@ -3,20 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Nik <Nik@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: vinograd <vinograd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/19 13:07:55 by vinograd          #+#    #+#             */
-/*   Updated: 2019/07/02 13:22:41 by Nik              ###   ########.fr       */
+/*   Updated: 2019/08/07 21:21:30 by vinograd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include <stdarg.h>
-# include <wchar.h>
+# include "../libft.h"
 
-typedef struct	s_flags
+typedef struct
 {
 	short			width;
 	unsigned short	length;
@@ -29,14 +28,19 @@ typedef struct	s_flags
 	unsigned char	plus;
 	unsigned char	zero;
 	unsigned char	l_flag;
+	unsigned char	ld_flag;
 	unsigned char	h_flag;
 	unsigned char	j_flag;
 	unsigned char	z_flag;
-}				t_flag;
+}					t_flag;
 
 t_flag			flag_analazer(const char *s);
-char			*specifier(register char ch, t_flag flags, va_list *ap);
+char			*specifier(t_flag *flags, va_list *ap);
 char			*redactor(char *arg, t_flag flags, register char spcf);
 char			*str_redactor(char *arg, register t_flag flags);
+int				color_redactor(const char *str);
+int				putstr_for_null_char(char *s);
+int				putstr_color(char *s);
+int				ft_strlen_color(char *s);
 
 #endif

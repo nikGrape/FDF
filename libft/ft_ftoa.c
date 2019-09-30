@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ftoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Nik <Nik@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: vinograd <vinograd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/24 18:27:57 by vinograd          #+#    #+#             */
-/*   Updated: 2019/07/02 13:00:30 by Nik              ###   ########.fr       */
+/*   Updated: 2019/07/09 01:22:03 by vinograd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	approximator(char *fract, double nbr)
 {
 	int apr;
 	int i;
-	
+
 	i = ft_strlen(fract);
 	nbr *= 10;
 	apr = (int)nbr;
@@ -25,12 +25,12 @@ static int	approximator(char *fract, double nbr)
 		while (i)
 		{
 			if (fract[--i] != '9')
-				{
-					fract[i] += 1;
-					return (0);
-				}
+			{
+				fract[i] += 1;
+				return (0);
+			}
 			else
-				fract[i] = '0';			
+				fract[i] = '0';
 		}
 	else
 		return (0);
@@ -41,7 +41,7 @@ char		*ft_ftoa_long(long double nbr, unsigned int precision)
 {
 	int			i;
 	size_t		whole;
-	char		fract[500];
+	char		fract[501];
 	int			sign;
 	char		ch;
 
@@ -54,13 +54,13 @@ char		*ft_ftoa_long(long double nbr, unsigned int precision)
 	while (precision--)
 	{
 		nbr *= 10;
-		fract[i++] = nbr + '0';
-		nbr -= (int)nbr;
+		fract[i++] = (size_t)nbr % 10 + '0';
+		nbr -= (size_t)nbr;
 	}
 	fract[i] = '\0';
-	whole += approximator(fract, nbr);	
-	return (sign < 0) ? ft_strjoin_free("-", ft_strjoin_free\
-	(ft_stradd(ft_itoa_unsigned(whole), ch), fract, 1), 2)\
+	whole += approximator(fract, nbr);
+	return (sign < 0) ? ft_strjoin_free("-",\
+	ft_strjoin_free(ft_stradd(ft_itoa_unsigned(whole), ch), fract, 1), 2)\
 	: ft_strjoin_free(ft_stradd(ft_itoa_unsigned(whole), ch), fract, 1);
 }
 

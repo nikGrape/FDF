@@ -1,38 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stradd.c                                        :+:      :+:    :+:   */
+/*   arr_new.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Nik <Nik@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/24 21:50:31 by vinograd          #+#    #+#             */
-/*   Updated: 2019/09/18 21:47:36 by Nik              ###   ########.fr       */
+/*   Created: 2019/08/31 14:52:58 by Nik               #+#    #+#             */
+/*   Updated: 2019/08/31 17:18:14 by Nik              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-**	add a new character in the end of the string
-*/
+#include "array_int.h"
 
-#include "libft.h"
-
-char	*ft_stradd(char *str, char ch)
+int		*arr_new(char *arr)
 {
+	int		*new;
 	int		len;
-	char	*new;
-
-	len = 0;
-	if (str)
+	char	**tmp;
+	int		i;
+	int		j;
+	
+	tmp = ft_strsplit(arr, ' ');
+	len = ft_arraylen(tmp);
+	new = (int *)malloc(sizeof(int) * (len + 1));
+	i = 1;
+	j = 0;
+	new[0] = len;
+	while (tmp[j])
 	{
-		len = ft_strlen(str);
-		if (!(new = (char*)ft_strnew(len + 1)))
-			return (NULL);
-		ft_strcat(new, str);
-		ft_strdel(&str);
+		if (check_arr_input(tmp[j]))
+		{
+			j++;
+			new[0]--;
+			continue ;
+		}
+		new[i++] = ft_atoi(tmp[j++]);
 	}
-	else
-		new = ft_strnew(1);
-	new[0] = ch;
-	new[1] = '\0';
+	ft_arrayfree(tmp);
 	return (new);
 }

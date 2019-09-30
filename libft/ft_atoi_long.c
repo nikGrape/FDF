@@ -1,38 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stradd.c                                        :+:      :+:    :+:   */
+/*   ft_atoi_long.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Nik <Nik@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/24 21:50:31 by vinograd          #+#    #+#             */
-/*   Updated: 2019/09/18 21:47:36 by Nik              ###   ########.fr       */
+/*   Created: 2019/08/31 13:47:02 by Nik               #+#    #+#             */
+/*   Updated: 2019/08/31 13:47:25 by Nik              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-**	add a new character in the end of the string
-*/
-
 #include "libft.h"
 
-char	*ft_stradd(char *str, char ch)
+long	ft_atoi_long(char *s)
 {
-	int		len;
-	char	*new;
+	long	res;
+	int		sign;
+	int		i;
 
-	len = 0;
-	if (str)
-	{
-		len = ft_strlen(str);
-		if (!(new = (char*)ft_strnew(len + 1)))
-			return (NULL);
-		ft_strcat(new, str);
-		ft_strdel(&str);
-	}
-	else
-		new = ft_strnew(1);
-	new[0] = ch;
-	new[1] = '\0';
-	return (new);
+	res = 0;
+	i = 0;
+	while ((s[i] > 8 && s[i] < 20) || s[i] == ' ')
+		i++;
+	sign = (s[i] == '-') ? -1 : 1;
+	if (s[i] == '+' || s[i] == '-')
+		i++;
+	while ((s[i] >= '0' && s[i] <= '9') && s[i] != '\0')
+		res = res * 10 + (s[i++] - '0');
+	return (res * sign);
 }

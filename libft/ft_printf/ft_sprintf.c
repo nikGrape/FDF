@@ -1,41 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_sprintf.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Nik <Nik@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/19 11:15:24 by vinograd          #+#    #+#             */
-/*   Updated: 2019/07/02 13:25:20 by Nik              ###   ########.fr       */
+/*   Created: 2019/09/18 21:41:01 by Nik               #+#    #+#             */
+/*   Updated: 2019/09/18 21:54:25 by Nik              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-int		ft_printf(const char *str, ...)
+char		*ft_sprintf(const char *format, ...)
 {
 	va_list	ap;
 	t_flag	flags;
 	char	*s;
-	int		total;
+	char	*res;
 
-	total = 0;
-	va_start(ap, str);
-	while (*str)
+	res = ft_strnew(1);
+	va_start(ap, format);
+	while (*format)
 	{
-		if (*str != '%')
+		if (*format != '%' && *format)
 		{
-			ft_putchar(*str++);
-			total++;
+			res = ft_stradd(res, *format++);
 			continue ;
 		}
-		flags = flag_analazer(++str);
-		str += flags.steps;
-		if (!(s = specifier(*str++, flags, &ap)))
+		flags = (*format) ? flag_analazer(++format) : flag_analazer(format);
+		if (!(s = specifier(&flags, &ap)))
 			continue ;
-		total += ft_putstr(s);
-		ft_strdel(&s);
+		format += flags.steps;
+		res = ft_strjoin_free(res, s, 3);
 	}
 	va_end(ap);
-	return (total);
+	return (res);
 }

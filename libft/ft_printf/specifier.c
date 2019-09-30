@@ -3,30 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   specifier.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Nik <Nik@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: vinograd <vinograd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 00:55:21 by vinograd          #+#    #+#             */
-/*   Updated: 2019/07/02 17:43:58 by Nik              ###   ########.fr       */
+/*   Updated: 2019/07/30 14:03:18 by vinograd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-static char	*hendler_s_c(t_flag flags, va_list *ap)
+static char	*hendler_s_c(t_flag *flags, va_list *ap)
 {
 	char *s;
+	char ch;
 
 	s = NULL;
-	if (flags.spcf == 's')
+	if (flags->spcf == 's')
 	{
 		s = va_arg(*ap, char *);
-		s = (s) ? str_redactor(ft_strdup(s), flags) :\
-		str_redactor(ft_strdup("(null)"), flags);
+		s = (s) ? str_redactor(ft_strdup(s), *flags) :\
+		str_redactor(ft_strdup("(null)"), *flags);
 	}
-	else if (flags.spcf == 'c')
+	else if (flags->spcf == 'c')
 	{
-		flags.spcf = (char)va_arg(*ap, int);
-		s = str_redactor(ft_stradd(NULL, flags.spcf), flags);
+		ch = (char)va_arg(*ap, int);
+		if (ch)
+			s = str_redactor(ft_stradd(NULL, ch), *flags);
+		else
+			s = str_redactor(ft_strdup(""), *flags);
 	}
 	return (s);
 }
@@ -39,7 +43,7 @@ static char	*hendler_f_x(t_flag flags, va_list *ap)
 	if (flags.spcf == 'f')
 	{
 		flags.width = (flags.width == -1) ? 6 : flags.width;
-		if (flags.l_flag)
+		if (flags.ld_flag)
 			s = redactor(ft_ftoa_long(va_arg(*ap, long double),\
 			flags.width), flags, 'f');
 		else
@@ -84,28 +88,30 @@ static char	*hendler_d_i_u(register t_flag flags, va_list *ap)
 	return (s);
 }
 
-char		*specifier(register char spcf, t_flag flags, va_list *ap)
+char		*specifier(t_flag *flags, va_list *ap)
 {
 	char *s;
 
 	s = NULL;
-	flags.spcf = spcf;
-	if (spcf == 's' || spcf == 'c')
+	if (flags->spcf == 's' || flags->spcf == 'c')
 		s = hendler_s_c(flags, ap);
-	else if (spcf == 'd' || spcf == 'i' || spcf == 'u' || spcf == 'U')
-		s = hendler_d_i_u(flags, ap);
-	else if (spcf == 'X' || spcf == 'x' || spcf == 'f')
-		s = hendler_f_x(flags, ap);
-	else if (spcf == 'b')
-		s = redactor(ft_itoa_base(va_arg(*ap, int), 2), flags, 'o');
-	else if (spcf == 'o')
-		s = redactor(ft_itoa_base(va_arg(*ap, int), 8), flags, 'o');
-	else if (spcf == 'p')
+	else if (flags->spcf == 'd' || flags->spcf == 'i' |\
+	flags->spcf == 'u' || flags->spcf == 'U')
+		s = hendler_d_i_u(*flags, ap);
+	else if (flags->spcf == 'X' || flags->spcf == 'x' || flags->spcf == 'f')
+		s = hendler_f_x(*flags, ap);
+	else if (flags->spcf == 'b')
+		s = redactor(ft_itoa_base(va_arg(*ap, int), 2), *flags, 'o');
+	else if (flags->spcf == 'o')
+		s = redactor(ft_itoa_base(va_arg(*ap, int), 8), *flags, 'o');
+	else if (flags->spcf == 'p')
 		s = redactor(ft_itoa_base_unsigned(va_arg(*ap, size_t), 16),\
-		flags, 'p');
-	else if (spcf == '%')
-		s = str_redactor(ft_strdup("%"), flags);
+		*flags, 'p');
+	else if (flags->spcf == '%')
+		s = str_redactor(ft_strdup("%"), *flags);
+	else if (flags->spcf == '\0')
+		return (NULL);
 	else
-		s = str_redactor(ft_strdup(""), flags);
+		s = str_redactor(ft_strdup(""), *flags);
 	return (s);
 }

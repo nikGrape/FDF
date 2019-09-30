@@ -1,38 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stradd.c                                        :+:      :+:    :+:   */
+/*   arr_del.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Nik <Nik@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/24 21:50:31 by vinograd          #+#    #+#             */
-/*   Updated: 2019/09/18 21:47:36 by Nik              ###   ########.fr       */
+/*   Created: 2019/08/31 15:38:32 by Nik               #+#    #+#             */
+/*   Updated: 2019/08/31 16:57:59 by Nik              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-**	add a new character in the end of the string
-*/
+#include "array_int.h"
 
-#include "libft.h"
-
-char	*ft_stradd(char *str, char ch)
+static void	del_nbr(int *arr, int index)
 {
-	int		len;
-	char	*new;
-
-	len = 0;
-	if (str)
+	if (index < ARR_LEN && index >= 0)
 	{
-		len = ft_strlen(str);
-		if (!(new = (char*)ft_strnew(len + 1)))
-			return (NULL);
-		ft_strcat(new, str);
-		ft_strdel(&str);
+		index++;
+		while (index < ARR_LEN)
+		{
+			arr[index] = arr[index + 1];
+			index++;
+		}
+		ARR_LEN--;
 	}
-	else
-		new = ft_strnew(1);
-	new[0] = ch;
-	new[1] = '\0';
-	return (new);
+}
+
+void		arr_del(int *arr, int index, ...)
+{
+	va_list	ap;
+	int		ind;
+	int		i;
+
+	va_start(ap, index);
+	del_nbr(arr, index);
+	i = 1;
+	while ((ind = va_arg(ap, int)))
+	{
+		del_nbr(arr, ind - i);
+		i++;
+	}
+	va_end(ap);
 }

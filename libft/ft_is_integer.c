@@ -1,38 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stradd.c                                        :+:      :+:    :+:   */
+/*   ft_is_integer.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Nik <Nik@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/24 21:50:31 by vinograd          #+#    #+#             */
-/*   Updated: 2019/09/18 21:47:36 by Nik              ###   ########.fr       */
+/*   Created: 2019/08/31 13:48:14 by Nik               #+#    #+#             */
+/*   Updated: 2019/08/31 14:14:47 by Nik              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-**	add a new character in the end of the string
-*/
-
 #include "libft.h"
+#define INT_MAX 2147483647
+#define INT_MIN -2147483648
 
-char	*ft_stradd(char *str, char ch)
+int		ft_isinteger(char *nbr)
 {
-	int		len;
-	char	*new;
+	long num;
 
-	len = 0;
-	if (str)
-	{
-		len = ft_strlen(str);
-		if (!(new = (char*)ft_strnew(len + 1)))
-			return (NULL);
-		ft_strcat(new, str);
-		ft_strdel(&str);
-	}
-	else
-		new = ft_strnew(1);
-	new[0] = ch;
-	new[1] = '\0';
-	return (new);
+	if (!nbr || ft_strlen(nbr) > 11)
+		return (0);
+	num = ft_atoi_long(nbr);
+	return (num <= (long)INT_MAX && num >= (long)INT_MIN);
 }

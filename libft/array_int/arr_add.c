@@ -1,38 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stradd.c                                        :+:      :+:    :+:   */
+/*   arr_add.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Nik <Nik@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/24 21:50:31 by vinograd          #+#    #+#             */
-/*   Updated: 2019/09/18 21:47:36 by Nik              ###   ########.fr       */
+/*   Created: 2019/08/31 16:10:56 by Nik               #+#    #+#             */
+/*   Updated: 2019/08/31 17:10:10 by Nik              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-**	add a new character in the end of the string
-*/
+#include "array_int.h"
 
-#include "libft.h"
-
-char	*ft_stradd(char *str, char ch)
+void	arr_add(int **arr, int index, int nbr)
 {
-	int		len;
-	char	*new;
+	int		*new;
 
-	len = 0;
-	if (str)
+	if (index <= *ARR_LEN && index >= 0)
 	{
-		len = ft_strlen(str);
-		if (!(new = (char*)ft_strnew(len + 1)))
-			return (NULL);
-		ft_strcat(new, str);
-		ft_strdel(&str);
+		new = (int *)malloc(sizeof(int) * (*ARR_LEN + 4));
+		arr_copy(new, *arr);
+		new[0]++;
+		arr_set(new, index, nbr);
+		while (++index <= *ARR_LEN)
+			arr_set(new, index, (*arr)[index]);
+		free(*arr);
+		*arr = new;
 	}
-	else
-		new = ft_strnew(1);
-	new[0] = ch;
-	new[1] = '\0';
-	return (new);
 }

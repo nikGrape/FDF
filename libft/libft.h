@@ -6,7 +6,7 @@
 /*   By: Nik <Nik@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 18:26:04 by vinograd          #+#    #+#             */
-/*   Updated: 2019/07/02 13:23:47 by Nik              ###   ########.fr       */
+/*   Updated: 2019/09/27 15:09:00 by Nik              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@
 # include <stdlib.h>
 # include <stddef.h>
 # include <fcntl.h>
-# include "ft_printf.h"
+# include <stdarg.h>
+# include <wchar.h>
+# define MAX(A, B) (A > B ? A : B)
+# define MIN(A, B) (A > B ? B : A)
 
 typedef struct	s_list
 {
@@ -34,11 +37,13 @@ typedef struct	s_arr
 }				t_arr;
 
 int				ft_atoi(const char *s);
+long			ft_atoi_long(char *s);
 void			ft_bzero(void *s, size_t n);
 int				ft_isalnum(int i);
 int				ft_isalpha(int c);
 int				ft_isascii(int c);
 int				ft_isdigit(int c);
+int				ft_isinteger(char *nbr);
 int				ft_isprint(int c);
 void			*ft_memccpy(void *restrict dst, const void *restrict src, \
 		int c, size_t n);
@@ -114,6 +119,7 @@ void			*ft_memdup(void const *src, size_t len);
 int				ft_wdcounter(char const *str, char c);
 int				ft_strindex(char *haystack, char *needle);
 void			ft_swap(char *c1, char *c2);
+void			ft_swapi(int *c1, int *c2);
 char			*ft_ftoa(double nbr, unsigned int precision);
 char			*ft_ftoa_long(long double nbr, unsigned int precision);
 char			*ft_itoa_unsigned(size_t nbr);
@@ -128,6 +134,20 @@ char			*ft_stradd(char *str, char ch);
 ** Extra functions II
 */
 int				get_next_line(const int fd, char **line);
-int				ft_printf(const char *str, ...);
+int				ft_printf(const char *format, ...);
+char			*ft_sprintf(const char *format, ...);
+int				ft_arrayfree(char **arr);
+int				ft_arraylen(char **arr);
+/*
+** Array int library
+*/
+int				*arr_new(char *arr);
+int				arr_len(int *arr);
+int				arr_get(int *arr, int index);
+void			arr_set(int *arr, int index, int nbr);
+void			arr_del(int *arr, int index, ...);
+void			arr_print(int *arr);
+void			arr_add(int **arr, int index, int nbr);
+void			arr_cat(int **arr, char *addon);
 
 #endif

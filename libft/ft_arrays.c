@@ -1,38 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stradd.c                                        :+:      :+:    :+:   */
+/*   ft_arrays.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Nik <Nik@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/24 21:50:31 by vinograd          #+#    #+#             */
-/*   Updated: 2019/09/18 21:47:36 by Nik              ###   ########.fr       */
+/*   Created: 2019/08/31 14:45:08 by Nik               #+#    #+#             */
+/*   Updated: 2019/08/31 14:47:20 by Nik              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-**	add a new character in the end of the string
-*/
-
 #include "libft.h"
 
-char	*ft_stradd(char *str, char ch)
+int		ft_arraylen(char **arr)
 {
-	int		len;
-	char	*new;
+	int i;
 
-	len = 0;
-	if (str)
+	i = 0;
+	while (arr[i])
+		i++;
+	return (i);
+}
+
+int		ft_arrayfree(char **arr)
+{
+	int i;
+
+	i = 0;
+	while (arr[i])
 	{
-		len = ft_strlen(str);
-		if (!(new = (char*)ft_strnew(len + 1)))
-			return (NULL);
-		ft_strcat(new, str);
-		ft_strdel(&str);
+		ft_strdel(&arr[i]);
+		i++;
 	}
-	else
-		new = ft_strnew(1);
-	new[0] = ch;
-	new[1] = '\0';
-	return (new);
+	free(arr);
+	return (i);
 }
