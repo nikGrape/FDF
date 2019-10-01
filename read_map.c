@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Nik <Nik@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: vinograd <vinograd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/27 15:19:57 by Nik               #+#    #+#             */
-/*   Updated: 2019/09/27 22:07:22 by Nik              ###   ########.fr       */
+/*   Updated: 2019/09/30 16:05:48 by vinograd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ t_dot	**memory_allocete(char *file_name)
 		y++;
 	}
 	new = (t_dot **)malloc(sizeof(t_dot *) * y);
-	while (y)
+	while (y > 0)
 		new[--y] = (t_dot *)malloc(sizeof(t_dot) * (x + 1));
 	close(fd);
 	return (new);
@@ -95,4 +95,5 @@ t_dot	**read_map(char *file_name)
 // 		ft_printf("\n");
 // 		y++;
 // 	}
+// return (0);
 // }
