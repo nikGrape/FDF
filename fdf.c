@@ -6,7 +6,7 @@
 /*   By: vinograd <vinograd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/03 15:13:25 by vinograd          #+#    #+#             */
-/*   Updated: 2019/09/30 19:11:33 by vinograd         ###   ########.fr       */
+/*   Updated: 2019/09/30 19:17:40 by vinograd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,11 @@ int		modulo(int i)
 	return (i < 0) ? -i : i;
 }
 
+float	fmodulo(float i)
+{
+	return (i < 0) ? -i : i;
+}
+
 void	drow(t_dot a, t_dot b, int scale)
 {
 	float	step_x;
@@ -87,7 +92,7 @@ void	drow(t_dot a, t_dot b, int scale)
 	rotation(&b);
 	step_x = b.x - a.x;
 	step_y = b.y - a.y;
-	max = MAX(modulo(step_x), modulo(step_y));
+	max = MAX(fmodulo(step_x), fmodulo(step_y));
 	step_x /= max;
 	step_y /= max;
 	color = (b.z || a.z) ? 0xfc031c : 0xBBFAFF;
