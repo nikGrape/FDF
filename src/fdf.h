@@ -6,16 +6,16 @@
 /*   By: vinograd <vinograd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/03 15:13:39 by vinograd          #+#    #+#             */
-/*   Updated: 2019/10/01 21:17:55 by vinograd         ###   ########.fr       */
+/*   Updated: 2019/10/01 21:31:28 by vinograd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
-# include "libft/libft.h"
+# include "../libft/libft.h"
 # include <math.h>
-# include "minilibx_macos/mlx.h"
+# include "../minilibx_macos/mlx.h"
 # define PRM matrix[0][0]
 
 typedef struct
