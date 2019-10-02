@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Nik <Nik@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: vinograd <vinograd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/03 15:13:39 by vinograd          #+#    #+#             */
-/*   Updated: 2019/10/01 02:33:46 by Nik              ###   ########.fr       */
+/*   Updated: 2019/10/01 18:50:18 by vinograd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,21 +22,20 @@
 
 typedef struct
 {
-	float			x;
-	float			y;
-	float			z;
-	int				is_last;
-	
-	int				color;
-	int				scale;
-	int				z_scale;
-	int				shift_x;
-	int				shift_y;
-	int				is_isometric;
-	double			angle;
+	float		x;
+	float		y;
+	float		z;
+	int			is_last;
 
-	void			*mlx_ptr;
-	void			*win_ptr;
+	int			color;
+	int			scale;
+	int			z_scale;
+	int			shift_x;
+	int			shift_y;
+	int			is_isometric;
+	double		angle;
+	void		*mlx_ptr;
+	void		*win_ptr;
 }				t_dot;
 
 t_dot			**read_map(char *file_name);
@@ -44,5 +43,6 @@ void			isometric(t_dot *dot, double angle);
 void			draw(t_dot **matrix);
 int				deal_key(int key, t_dot **matrix);
 void			set_param(t_dot *a, t_dot *b, t_dot *param);
+void			print_menu(t_dot param);
 
 #endif

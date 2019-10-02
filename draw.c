@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Nik <Nik@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: vinograd <vinograd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 22:11:34 by Nik               #+#    #+#             */
-/*   Updated: 2019/10/01 02:45:04 by Nik              ###   ########.fr       */
+/*   Updated: 2019/10/01 18:49:35 by vinograd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,10 @@ void	draw(t_dot **matrix)
 		x = 0;
 		while (1)
 		{
-			if (matrix[y+1])
-				line(matrix[y][x], matrix[y+1][x], &matrix[0][0]);
+			if (matrix[y + 1])
+				line(matrix[y][x], matrix[y + 1][x], &matrix[0][0]);
 			if (!matrix[y][x].is_last)
-				line(matrix[y][x], matrix[y][x+1], &matrix[0][0]);
+				line(matrix[y][x], matrix[y][x + 1], &matrix[0][0]);
 			if (matrix[y][x].is_last)
 				break ;
 			x++;
