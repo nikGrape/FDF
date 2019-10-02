@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   deal_key.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vinograd <vinograd@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Nik <Nik@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 00:55:04 by Nik               #+#    #+#             */
-/*   Updated: 2019/10/01 21:19:05 by vinograd         ###   ########.fr       */
+/*   Updated: 2019/10/02 00:37:00 by Nik              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,30 +47,6 @@ void	do_key(int key, t_dot **matrix)
 		PRM.angle -= 0.05;
 }
 
-void	refresh_window(int key, t_dot **matrix)
-{
-	if ((key == 0 && PRM.win_y <= 500) || (key == 6 && PRM.win_x <= 500))
-		return ;
-	if ((key == 1 && PRM.win_y > 2000) || (key == 7 && PRM.win_x > 3000))
-		return ;
-	if (key == 6)
-		PRM.win_x -= 100;
-	if (key == 7)
-		PRM.win_x += 100;
-	if (key == 0)
-		PRM.win_y -= 100;
-	if (key == 1)
-		PRM.win_y += 100;
-	mlx_destroy_window(PRM.mlx_ptr, PRM.win_ptr);
-	PRM.mlx_ptr = mlx_init();
-	PRM.win_ptr = mlx_new_window(PRM.mlx_ptr, PRM.win_x, PRM.win_y, "FDF");
-	PRM.shift_x = PRM.win_x / 3;
-	PRM.shift_y = PRM.win_y / 3;
-	draw(matrix);
-	mlx_key_hook(PRM.win_ptr, deal_key, matrix);
-	mlx_loop(PRM.mlx_ptr);
-}
-
 int		deal_key(int key, t_dot **matrix)
 {
 	if (is_key(key))
@@ -80,8 +56,8 @@ int		deal_key(int key, t_dot **matrix)
 		print_menu(PRM);
 		draw(matrix);
 	}
-	if (key == 6 || key == 7 || key == 0 || key == 1)
-		refresh_window(key, matrix);
+	if (key == 6 || key == 7 || key == 0 || key == 1 || key == 3)
+		new_window(key, matrix);
 	if (key == '5')
 		exit(0);
 	return (0);

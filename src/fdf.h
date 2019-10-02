@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vinograd <vinograd@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Nik <Nik@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/03 15:13:39 by vinograd          #+#    #+#             */
-/*   Updated: 2019/10/01 21:31:28 by vinograd         ###   ########.fr       */
+/*   Updated: 2019/10/02 00:36:44 by Nik              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,6 @@ int				deal_key(int key, t_dot **matrix);
 void			set_param(t_dot *a, t_dot *b, t_dot *param);
 void			print_menu(t_dot param);
 void			ft_error(char *msg);
+void			new_window(int key, t_dot **matrix);
 
 #endif

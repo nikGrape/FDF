@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_menu.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vinograd <vinograd@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Nik <Nik@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 18:16:11 by vinograd          #+#    #+#             */
-/*   Updated: 2019/10/01 18:51:38 by vinograd         ###   ########.fr       */
+/*   Updated: 2019/10/02 00:45:36 by Nik              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,6 @@ void	print_menu(t_dot param)
 	mlx_string_put(param.mlx_ptr, param.win_ptr, 10, 20, 0x03fc35, menu);
 	menu = "8, 2: z-scale; 4, 6: rotation";
 	mlx_string_put(param.mlx_ptr, param.win_ptr, 10, 35, 0x03fc35, menu);
+	menu = "f: full screen mode";
+	mlx_string_put(param.mlx_ptr, param.win_ptr, 10, 50, 0x03fc35, menu);
 }
