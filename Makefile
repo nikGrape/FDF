@@ -6,14 +6,16 @@
 #    By: vinograd <vinograd@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/03 16:40:05 by vinograd          #+#    #+#              #
-#    Updated: 2019/10/01 16:10:00 by vinograd         ###   ########.fr        #
+#    Updated: 2019/10/01 21:27:21 by vinograd         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 FRAEMWORKS=-framework OpenGL -framework AppKit
+FLAGS=-Werror -Wextra -Wall
+NAME=fdf
 
 all:
-	gcc *.c libft/libft.a minilibx_macos/libmlx.a $(FRAEMWORKS)
+	gcc *.c -o $(NAME) $(FLAGS) libft/libft.a minilibx_macos/libmlx.a $(FRAEMWORKS)
 
 push:
 	git add .

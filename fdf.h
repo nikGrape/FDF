@@ -6,7 +6,7 @@
 /*   By: vinograd <vinograd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/03 15:13:39 by vinograd          #+#    #+#             */
-/*   Updated: 2019/10/01 20:56:55 by vinograd         ###   ########.fr       */
+/*   Updated: 2019/10/01 21:17:55 by vinograd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ typedef struct
 	int			shift_y;
 	int			is_isometric;
 	double		angle;
-	int			window_x;
-	int			window_y;
+	int			win_x;
+	int			win_y;
 	void		*mlx_ptr;
 	void		*win_ptr;
 }				t_dot;

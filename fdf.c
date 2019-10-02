@@ -6,7 +6,7 @@
 /*   By: vinograd <vinograd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/03 15:13:25 by vinograd          #+#    #+#             */
-/*   Updated: 2019/10/01 21:10:24 by vinograd         ###   ########.fr       */
+/*   Updated: 2019/10/01 21:19:44 by vinograd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,13 @@ void	set_default(t_dot *param)
 	param->z_scale = 1;
 	param->is_isometric = 1;
 	param->angle = 0.523599;
-	param->window_x = 2000;
-	param->window_y = 1000;
-	param->shift_x = param->window_x / 3;
-	param->shift_y = param->window_y / 3;
+	param->win_x = 2000;
+	param->win_y = 1000;
+	param->shift_x = param->win_x / 3;
+	param->shift_y = param->win_y / 3;
 	param->mlx_ptr = mlx_init();
-	param->win_ptr = mlx_new_window(param->mlx_ptr, param->window_x, param->window_y, "FDF");
+	param->win_ptr =\
+	mlx_new_window(param->mlx_ptr, param->win_x, param->win_y, "FDF");
 }
 
 int		main(int argc, char **argv)

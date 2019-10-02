@@ -6,7 +6,7 @@
 /*   By: vinograd <vinograd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 22:11:34 by Nik               #+#    #+#             */
-/*   Updated: 2019/10/01 20:57:18 by vinograd         ###   ########.fr       */
+/*   Updated: 2019/10/01 21:18:32 by vinograd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	line(t_dot a, t_dot b, t_dot *param)
 		mlx_pixel_put(param->mlx_ptr, param->win_ptr, a.x, a.y, color);
 		a.x += step_x;
 		a.y += step_y;
-		if (a.x > param->window_x || a.y > param->window_y || a.y < 0 || a.x < 0)
+		if (a.x > param->win_x || a.y > param->win_y || a.y < 0 || a.x < 0)
 			break ;
 	}
 }
