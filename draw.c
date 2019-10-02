@@ -6,7 +6,7 @@
 /*   By: vinograd <vinograd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 22:11:34 by Nik               #+#    #+#             */
-/*   Updated: 2019/10/01 18:49:35 by vinograd         ###   ########.fr       */
+/*   Updated: 2019/10/01 20:57:18 by vinograd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	line(t_dot a, t_dot b, t_dot *param)
 		mlx_pixel_put(param->mlx_ptr, param->win_ptr, a.x, a.y, color);
 		a.x += step_x;
 		a.y += step_y;
-		if (a.x > WINDOW_X || a.y > WINDOW_Y || a.y < 0 || a.x < 0)
+		if (a.x > param->window_x || a.y > param->window_y || a.y < 0 || a.x < 0)
 			break ;
 	}
 }
@@ -47,6 +47,7 @@ void	draw(t_dot **matrix)
 	int		y;
 	int		x;
 
+	print_menu(PRM);
 	y = 0;
 	while (matrix[y])
 	{
@@ -54,9 +55,9 @@ void	draw(t_dot **matrix)
 		while (1)
 		{
 			if (matrix[y + 1])
-				line(matrix[y][x], matrix[y + 1][x], &matrix[0][0]);
+				line(matrix[y][x], matrix[y + 1][x], &PRM);
 			if (!matrix[y][x].is_last)
-				line(matrix[y][x], matrix[y][x + 1], &matrix[0][0]);
+				line(matrix[y][x], matrix[y][x + 1], &PRM);
 			if (matrix[y][x].is_last)
 				break ;
 			x++;

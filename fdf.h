@@ -6,7 +6,7 @@
 /*   By: vinograd <vinograd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/03 15:13:39 by vinograd          #+#    #+#             */
-/*   Updated: 2019/10/01 18:50:18 by vinograd         ###   ########.fr       */
+/*   Updated: 2019/10/01 20:56:55 by vinograd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 # include "libft/libft.h"
 # include <math.h>
 # include "minilibx_macos/mlx.h"
-# define WINDOW_X 2000
-# define WINDOW_Y 1000
 # define PRM matrix[0][0]
 
 typedef struct
@@ -34,6 +32,8 @@ typedef struct
 	int			shift_y;
 	int			is_isometric;
 	double		angle;
+	int			window_x;
+	int			window_y;
 	void		*mlx_ptr;
 	void		*win_ptr;
 }				t_dot;
@@ -44,5 +44,6 @@ void			draw(t_dot **matrix);
 int				deal_key(int key, t_dot **matrix);
 void			set_param(t_dot *a, t_dot *b, t_dot *param);
 void			print_menu(t_dot param);
+void			ft_error(char *msg);
 
 #endif
