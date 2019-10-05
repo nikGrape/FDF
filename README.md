@@ -11,7 +11,7 @@ make<br>
 The FDF project is oboult to create 3D model from a text map.<br>
 
 Example of map:
-<h1>0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0</h1><br>
+0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0<br>
 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0<br>
 0  0 10 10  0  0 10 10  0  0  0 10 10 10 10 10  0  0  0<br>
 0  0 10 10  0  0 10 10  0  0  0  0  0  0  0 10 10  0  0<br>
