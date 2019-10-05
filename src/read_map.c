@@ -6,7 +6,7 @@
 /*   By: Nik <Nik@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/27 15:19:57 by Nik               #+#    #+#             */
-/*   Updated: 2019/10/02 00:11:52 by Nik              ###   ########.fr       */
+/*   Updated: 2019/10/05 14:14:04 by Nik              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ t_dot	**memory_allocete(char *file_name)
 	int		fd;
 	char	*line;
 
-	fd = open(file_name, O_RDONLY, 0);
+	if ((fd = open(file_name, O_RDONLY, 0)) <= 0)
+		ft_error("file does not exist");
 	get_next_line(fd, &line);
 	x = ft_wdcounter(line, ' ');
 	free(line);

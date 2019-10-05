@@ -6,7 +6,7 @@
 /*   By: Nik <Nik@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 00:55:04 by Nik               #+#    #+#             */
-/*   Updated: 2019/10/02 00:37:00 by Nik              ###   ########.fr       */
+/*   Updated: 2019/10/05 14:20:00 by Nik              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,10 @@ int		deal_key(int key, t_dot **matrix)
 	if (key == 6 || key == 7 || key == 0 || key == 1 || key == 3)
 		new_window(key, matrix);
 	if (key == '5')
+	{
+		mlx_destroy_window(PRM.mlx_ptr, PRM.win_ptr);
+		free(matrix);
 		exit(0);
+	}
 	return (0);
 }
