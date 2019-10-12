@@ -49,12 +49,13 @@ You can move, zoom and rotate it</p>
 **				that means that y should grow 2 times faster than x
 **				ewery loop step: y += 1 and x += 0.5
 **				after 4 steps x and y will be equal with x1, y1
-**							real x:y			x:y				pixels				
-**				start:		2.0 : 2.0			2:2					.
-**				step1:		2.5 : 3.0			2:3					.
-**				step2:		3.0	: 4.0			3:4					 .
-**				step3:		3.5 : 5.0			3:5					 .
-**				step4:		4.0 : 6.0			4:6					  .
+**
+**					real x:y		x:y     pixels				
+**			start:		2.0 : 2.0		2:2        .
+**			step1:		2.5 : 3.0		2:3        .
+**			step2:		3.0 : 4.0		3:4         .
+**			step3:		3.5 : 5.0		3:5         .
+**			step4:		4.0 : 6.0		4:6          .
 **
 **				that works because (float)2.5 turns to (int)2 in func. mlx_pixel_put()
 **	--------------
