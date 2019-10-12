@@ -30,8 +30,8 @@ for examle the first 10 has [2:2:10] cordinates.<br><br>
 You can move, zoom and rotate it</p>
 <img src="https://github.com/nikGrape/FDF/blob/master/Screen%20Shot%202019-10-05%20at%202.38.08%20PM.png" height="50%" width="50%">
 
-</pre>
-**	--------------- program structure -----------------------<br>
+<pre>
+**	--------------- program structure -----------------------
 **	1. read file
 **		- get height(how many lines) of text
 **		- get width(how many numbers in line)
@@ -72,7 +72,7 @@ You can move, zoom and rotate it</p>
 **				0->		0->		0->		0
 **			'->' and '|'are lines between dots 
 **			every dot has two lines (right and down):	0->
-**														|
+**                                                |
 **	----------------
 **	4. adding 3D
 **		- change coordinates by using isometric formulas:
